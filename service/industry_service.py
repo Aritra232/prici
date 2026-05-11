@@ -4,7 +4,7 @@ Industry Search Service — AI-Powered (OpenAI)
 Uses OpenAI API to dynamically return related industries.
 Handles typos, partial input, and semantic understanding automatically.
 
-Requires: OPENAI_API_KEY environment variable
+Requires: OPENAI_API_KEY environment variable   
 """
 
 import json
