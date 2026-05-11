@@ -7,8 +7,8 @@ Run:
     python main.py
 
 API Endpoints:
-    GET /hobbies/search?q=cycling&limit=10
-    GET /industries/search?q=healthcare&limit=10
+    POST /hobbies/search?q=cycling&limit=10
+    POST /industries/search?q=healthcare&limit=10
     GET /health
     GET /docs      ← Swagger UI
     GET /redoc     ← ReDoc UI
@@ -52,7 +52,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_methods=["GET"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
@@ -103,7 +103,7 @@ def health_check():
     return {"status": "ok", "message": "Hobby & Industry Search API is running."}
 
 
-@app.get(
+@app.post(
     "/hobbies/search",
     response_model=HobbySearchResponse,
     tags=["Hobbies"],
@@ -125,7 +125,7 @@ def hobby_search(
     return {"query": q, "total": len(results), "results": results}
 
 
-@app.get(
+@app.post(
     "/industries/search",
     response_model=IndustrySearchResponse,
     tags=["Industries"],
@@ -147,7 +147,7 @@ def industry_search(
     return {"query": q, "total": len(results), "results": results}
 
 
-@app.get(
+@app.post(
     "/job-titles/search",
     response_model=JobTitleSearchResponse,
     tags=["Job Titles"],

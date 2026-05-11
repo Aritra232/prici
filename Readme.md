@@ -54,6 +54,6 @@ Once the server is running, you can access the interactive API documentation at:
 ## Endpoints
 
 - `GET /health` - Health check
-- `GET /hobbies/search?q={query}&limit={limit}` - Search for hobbies
-- `GET /industries/search?q={query}&limit={limit}` - Search for industries
-- `GET /job-titles/search?q={query}&limit={limit}` - Search for job titles
+- `POST /hobbies/search?q={query}&limit={limit}` - Search for hobbies
+- `POST /industries/search?q={query}&limit={limit}` - Search for industries
+- `POST /job-titles/search?q={query}&limit={limit}` - Search for job titles
