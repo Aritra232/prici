@@ -1,4 +1,4 @@
-﻿"""
+"""
 Hobby Search Service — AI-Powered (OpenAI)
 --------------------------------------------
 Uses OpenAI API to dynamically return related hobbies.
@@ -22,14 +22,14 @@ Rules:
 - Include the closest match to the query FIRST in the list.
 - Include all meaningfully related hobbies (same family, similar activity, etc.).
 - Return ONLY a valid JSON array of objects. No markdown, no explanation, no extra text.
-- Each object must have exactly two keys: "hobby" (string) and "reason" (short string explaining the relation).
+- Each object must have exactly one key: "hobby" (string).
 - Return between 5 and 15 results.
 
 Example output format:
 [
-  {"hobby": "Cycling", "reason": "Direct match"},
-  {"hobby": "Mountain Biking", "reason": "Off-road variant of cycling"},
-  {"hobby": "Road Cycling", "reason": "Paved-road variant of cycling"}
+  {"hobby": "Cycling"},
+  {"hobby": "Mountain Biking"},
+  {"hobby": "Road Cycling"}
 ]
 """
 
@@ -43,7 +43,7 @@ def search_hobbies(query: str, limit: int = 10) -> list[dict]:
         limit: Max number of results to return.
 
     Returns:
-        List of dicts with keys: hobby, reason
+        List of dicts with keys: hobby
     """
     query = query.strip()
     if not query:

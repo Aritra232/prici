@@ -23,18 +23,18 @@ Rules:
 - ALWAYS include 4 to 14 additional related job titles after the first one, even if there is an exact match.
 - "Related" means: same seniority level in a nearby domain, a specialization, a generalization, or a role with significantly overlapping responsibilities.
 - Return ONLY a valid JSON object with a single key "results" which contains an array of objects. No markdown, no explanation.
-- Each object in the "results" array must have exactly two keys: "job_title" (string) and "reason" (short string explaining the relation, max 10 words).
+- Each object in the "results" array must have exactly one key: "job_title" (string).
 - Return between 5 and 15 results total. Never return fewer than 5.
 
 Example output for "backend developer":
 {
   "results": [
-    {"job_title": "Backend Developer",    "reason": "Direct match"},
-    {"job_title": "Full Stack Developer", "reason": "Covers backend and frontend development"},
-    {"job_title": "Software Engineer",    "reason": "Broader role with backend responsibilities"},
-    {"job_title": "API Developer",        "reason": "Specializes in backend API design"},
-    {"job_title": "Cloud Engineer",       "reason": "Backend systems in cloud environments"},
-    {"job_title": "DevOps Engineer",      "reason": "Manages backend infrastructure and pipelines"}
+    {"job_title": "Backend Developer"},
+    {"job_title": "Full Stack Developer"},
+    {"job_title": "Software Engineer"},
+    {"job_title": "API Developer"},
+    {"job_title": "Cloud Engineer"},
+    {"job_title": "DevOps Engineer"}
   ]
 }
 """
@@ -49,7 +49,7 @@ def search_job_titles(query: str, limit: int = 10) -> list[dict]:
         limit: Max number of results to return.
 
     Returns:
-        List of dicts with keys: job_title, reason
+        List of dicts with keys: job_title
     """
     query = query.strip()
     if not query:
