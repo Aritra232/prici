@@ -22,17 +22,17 @@ Rules:
 - Include the closest match to the query FIRST in the list.
 - ALWAYS include 4 to 14 additional related industries after the first one, even if there is an exact match.
 - Return ONLY a valid JSON object with a single key "results" which contains an array of objects. No markdown, no explanation.
-- Each object in the "results" array must have exactly two keys: "industry" (string) and "reason" (short string explaining the relation).
+- Each object in the "results" array must have exactly one key: "industry" (string).
 - Return between 5 and 15 results total. Never return fewer than 5.
 
 Example output format:
 {
   "results": [
-    {"industry": "Healthcare", "reason": "Direct match"},
-    {"industry": "Pharmaceuticals", "reason": "Drug development within healthcare"},
-    {"industry": "Medical Devices", "reason": "Equipment used in healthcare"},
-    {"industry": "Biotechnology", "reason": "Biological research for healthcare"},
-    {"industry": "Health Informatics", "reason": "IT services for healthcare"}
+    {"industry": "Healthcare"},
+    {"industry": "Pharmaceuticals"},
+    {"industry": "Medical Devices"},
+    {"industry": "Biotechnology"},
+    {"industry": "Health Informatics"}
   ]
 }
 """
@@ -47,7 +47,7 @@ def search_industries(query: str, limit: int = 10) -> list[dict]:
         limit: Max number of results to return.
 
     Returns:
-        List of dicts with keys: industry, reason
+        List of dicts with keys: industry
     """
     query = query.strip()
     if not query:

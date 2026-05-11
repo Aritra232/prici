@@ -1,4 +1,4 @@
-﻿"""
+"""
 main.py — Hobby & Industry Search API (OpenAI-Powered)
 ========================================================
 Run:
@@ -62,17 +62,14 @@ app.add_middleware(
 # ---------------------------------------------------------------------------
 class HobbyResult(BaseModel):
     hobby: str
-    reason: str
 
 
 class IndustryResult(BaseModel):
     industry: str
-    reason: str
 
 
 class JobTitleResult(BaseModel):
     job_title: str
-    reason: str
 
 
 class HobbySearchResponse(BaseModel):
